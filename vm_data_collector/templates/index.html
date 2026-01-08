@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Host inventory (Qualys inspired replica)</title>
+
+    <!-- AUTO REFRESH EVERY 5 SECONDS -->
+    <meta http-equiv="refresh" content="5">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .toolbar {
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Host Inventory (Qualys working demo) (Auto refresh: 5s)</h2>
+
+<div class="toolbar">
+    <button onclick="location.reload()">🔄 Refresh Now</button>
+    <span style="margin-left:10px; font-size:12px;">
+        Page auto-refreshes every 5 seconds
+    </span>
+</div>
+
+<table>
+    <tr>
+        <th>Hostname</th>
+        <th>OS</th>
+        <th>OS Release</th>
+        <th>Architecture</th>
+        <th>Last Updated (UTC)</th>
+    </tr>
+    {% for host in hosts %}
+    <tr>
+        <td>{{ host["hostname"] }}</td>
+        <td>{{ host["os_name"] }}</td>
+        <td>{{ host["os_release"] }}</td>
+        <td>{{ host["architecture"] }}</td>
+        <td>{{ host["last_updated"] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
